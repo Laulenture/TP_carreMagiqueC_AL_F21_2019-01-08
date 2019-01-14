@@ -44,7 +44,7 @@ int main()
     printf("%s\n",sTexte);
 
     init(*carreMagique,&coord_pt,&nCpt);
-    while(nCpt > TAILLE*TAILLE){
+    while(nCpt <= TAILLE*TAILLE){
 
         nordEst(&coord_pt);
         testVide(carreMagique,&coord_pt);
@@ -83,7 +83,7 @@ void placer(int *carreMagique[TAILLE][TAILLE], coord *coord_pt, int *nCpt){
 
 void testVide(int carreMagique[TAILLE][TAILLE], coord *coord_pt){
 
-    while(carreMagique[(*coord_pt).nX][(*coord_pt).nY] == 0){
+    while(carreMagique[(*coord_pt).nX][(*coord_pt).nY] != 0){
 
         nordOuest(&coord_pt);
 
@@ -93,18 +93,35 @@ void testVide(int carreMagique[TAILLE][TAILLE], coord *coord_pt){
 
 void nordOuest(coord *coord_pt){
 
-    (*coord_pt).nX--;
+    /*(*coord_pt).nX--;
     (*coord_pt).nY++;
-    corriger(&coord_pt);
+    corriger(&(*coord_pt));*/
 
+    (*coord_pt).nX=(*coord_pt).nX-1;
+	if((*coord_pt).nX==-1){
+        (*coord_pt).nX=4;
+	}
+	(*coord_pt).nY=(*coord_pt).nY-1;
+	if((*coord_pt).nY==-1){
+        (*coord_pt).nY=4;
+	}
 }
 
 
 void nordEst(coord *coord_pt){
 
-    (*coord_pt).nX--;
+    /*(*coord_pt).nX--;
     (*coord_pt).nY--;
-    corriger(&coord_pt);
+    corriger(&(*coord_pt));*/
+
+    (*coord_pt).nX=(*coord_pt).nX+1;
+	if((*coord_pt).nX==5){
+        (*coord_pt).nX=0;
+	}
+	(*coord_pt).nY=(*coord_pt).nY-1;
+	if((*coord_pt).nY==-1){
+        (*coord_pt).nY=4;
+	}
 
 }
 
@@ -112,13 +129,17 @@ void nordEst(coord *coord_pt){
 void corriger(coord *coord_pt){
 
     if((*coord_pt).nX < 0){
-        (*coord_pt).nX = TAILLE;
+        (*coord_pt).nX = TAILLE-1;
     }
-    if((*coord_pt).nY > 0){
+    if((*coord_pt).nX > TAILLE-1){
+        printf("%i > %i",(*coord_pt).nX,TAILLE-1);
+        (*coord_pt).nX = 0;
+    }
+    if((*coord_pt).nY > TAILLE-1){
         (*coord_pt).nY = 0;
     }
     if((*coord_pt).nY < 0){
-        (*coord_pt).nY = TAILLE;
+        (*coord_pt).nY = TAILLE-1;
     }
 
 }
@@ -137,6 +158,6 @@ void init(int *carreMagique[TAILLE][TAILLE],coord *coord_pt,int *nCpt){
     (*coord_pt).nX = 2;
     (*coord_pt).nY = 1;
     carreMagique[(*coord_pt).nX][(*coord_pt).nY] = 1;
-    nCpt = 2;
+    *nCpt = 2;
 
 }
