@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1547476675 source:d:\users\hikaru\documents\ludus\defis\f21\aulen_gerges\jeu\sources\tp_c_carremagique_al_f21_2019-01-08\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+
+1547477182 source:d:\free pascal fpc\bin\i386-win32\programs\f21\git\tp_c_carremagique_al_f21_2019-01-08\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+
