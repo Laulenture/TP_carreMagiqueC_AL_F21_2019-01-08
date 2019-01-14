@@ -67,6 +67,11 @@ void affiche(int carreMagique[TAILLE][TAILLE]){
 
             printf("%i",carreMagique[nI][nJ]);
 
+            if(carreMagique[nI][nJ]>9){
+                printf(" ");
+            }else{
+                printf("  ");
+            }
         }
         printf("\n");
 
@@ -77,13 +82,13 @@ void affiche(int carreMagique[TAILLE][TAILLE]){
 
 void placer(int *carreMagique[TAILLE][TAILLE], coord *coord_pt, int *nCpt){
 
-    carreMagique[(*coord_pt).nX][(*coord_pt).nY] = nCpt;
+    carreMagique[(*coord_pt).nX][(*coord_pt).nY] = *nCpt;
 
 }
 
 void testVide(int carreMagique[TAILLE][TAILLE], coord *coord_pt){
 
-    while(carreMagique[(*coord_pt).nX][(*coord_pt).nY] != 0){
+    if(carreMagique[(*coord_pt).nX][(*coord_pt).nY]!=0){
 
         nordOuest(&coord_pt);
 
@@ -93,54 +98,38 @@ void testVide(int carreMagique[TAILLE][TAILLE], coord *coord_pt){
 
 void nordOuest(coord *coord_pt){
 
-    /*(*coord_pt).nX--;
-    (*coord_pt).nY++;
-    corriger(&(*coord_pt));*/
-
     (*coord_pt).nX=(*coord_pt).nX-1;
-	if((*coord_pt).nX==-1){
-        (*coord_pt).nX=4;
-	}
 	(*coord_pt).nY=(*coord_pt).nY-1;
-	if((*coord_pt).nY==-1){
-        (*coord_pt).nY=4;
-	}
+    corriger(&(*coord_pt));
+
 }
 
 
 void nordEst(coord *coord_pt){
 
-    /*(*coord_pt).nX--;
-    (*coord_pt).nY--;
-    corriger(&(*coord_pt));*/
-
     (*coord_pt).nX=(*coord_pt).nX+1;
-	if((*coord_pt).nX==5){
-        (*coord_pt).nX=0;
-	}
 	(*coord_pt).nY=(*coord_pt).nY-1;
-	if((*coord_pt).nY==-1){
-        (*coord_pt).nY=4;
-	}
-
+    corriger(&(*coord_pt));
 }
 
 
 void corriger(coord *coord_pt){
 
     if((*coord_pt).nX < 0){
-        (*coord_pt).nX = TAILLE-1;
-    }
-    if((*coord_pt).nX > TAILLE-1){
-        printf("%i > %i",(*coord_pt).nX,TAILLE-1);
+        (*coord_pt).nX = TAILLE - 1;
+	}
+
+	if((*coord_pt).nX >= TAILLE){
         (*coord_pt).nX = 0;
-    }
-    if((*coord_pt).nY > TAILLE-1){
-        (*coord_pt).nY = 0;
-    }
+	}
+
     if((*coord_pt).nY < 0){
-        (*coord_pt).nY = TAILLE-1;
-    }
+        (*coord_pt).nY = TAILLE - 1;
+	}
+
+    if((*coord_pt).nY >= TAILLE){
+        (*coord_pt).nY = 0;
+	}
 
 }
 
