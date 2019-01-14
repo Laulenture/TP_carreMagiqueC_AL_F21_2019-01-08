@@ -48,6 +48,9 @@ int main()
 
         nordEst(&coord_pt);
         testVide(carreMagique,&coord_pt);
+        if (carreMagique[(coord_pt).nX][(coord_pt).nY] != 0){
+            nordOuest(&coord_pt);
+        }
         placer(&carreMagique,&coord_pt, &nCpt);
         nCpt++;
 
@@ -119,7 +122,10 @@ void testVide(int carreMagique[TAILLE][TAILLE], coord *coord_pt){
 void nordOuest(coord *coord_pt){
 
     (*coord_pt).nX=(*coord_pt).nX-1;
+    //int lol1 = (*coord_pt).nX;
 	(*coord_pt).nY=(*coord_pt).nY-1;
+	//int lol2 = (*coord_pt).nY;
+	//printf("%d %d",lol1,lol2);
     corriger(&(*coord_pt));
 
 }
@@ -131,9 +137,10 @@ void nordOuest(coord *coord_pt){
   */
 void nordEst(coord *coord_pt){
 
-    (*coord_pt).nX=(*coord_pt).nX+1;
-	(*coord_pt).nY=(*coord_pt).nY-1;
+    (*coord_pt).nX=(*coord_pt).nX-1;
+	(*coord_pt).nY=(*coord_pt).nY+1;
     corriger(&(*coord_pt));
+
 }
 
 /**
@@ -176,8 +183,8 @@ void init(int *carreMagique[TAILLE][TAILLE],coord *coord_pt,int *nCpt){
         }
     }
 
-    (*coord_pt).nX = 2;
-    (*coord_pt).nY = 1;
+    (*coord_pt).nX = 1;
+    (*coord_pt).nY = 2;
     carreMagique[(*coord_pt).nX][(*coord_pt).nY] = 1;
     *nCpt = 2;
 
