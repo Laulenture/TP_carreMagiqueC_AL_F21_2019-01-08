@@ -54,9 +54,15 @@ int main()
     }
 
     affiche(carreMagique);
+    system("pause");
     return 0;
 }
 
+/**
+  * BUT : En fin de programme, afiche le tableau renseigné.
+  * ENTREE : le tableau
+  * SORTIE : tableau affiché
+  */
 void affiche(int carreMagique[TAILLE][TAILLE]){
 
     int nI,nJ;
@@ -79,16 +85,25 @@ void affiche(int carreMagique[TAILLE][TAILLE]){
 
 }
 
-
+/**
+  * BUT : Renseigne la case une foie les coordonnées selectionnées
+  * ENTREE : la tableau et les coordonnées
+  * SORTIE : la case remplie
+  */
 void placer(int *carreMagique[TAILLE][TAILLE], coord *coord_pt, int *nCpt){
 
     carreMagique[(*coord_pt).nX][(*coord_pt).nY] = *nCpt;
 
 }
 
+/**
+  * BUT : Vérifie que la case présente est vide, sinon la procédure nordOuest est éxetutée pour changer les coordonnées sur une case vide
+  * ENTREE : le tableau et les coordonnées
+  * SORTIE : -
+  */
 void testVide(int carreMagique[TAILLE][TAILLE], coord *coord_pt){
 
-    if(carreMagique[(*coord_pt).nX][(*coord_pt).nY]!=0){
+    if(carreMagique[(*coord_pt).nX][(*coord_pt).nY] != 0){
 
         nordOuest(&coord_pt);
 
@@ -96,6 +111,11 @@ void testVide(int carreMagique[TAILLE][TAILLE], coord *coord_pt){
 
 }
 
+/**
+  * BUT : Déplace les coordonnées sur la case en haut à gauche de la case présente si elle à déjà été renseignée
+  * ENTREE : les coordonnées
+  * SORTIE : les coordonnées misent à jour
+  */
 void nordOuest(coord *coord_pt){
 
     (*coord_pt).nX=(*coord_pt).nX-1;
@@ -104,7 +124,11 @@ void nordOuest(coord *coord_pt){
 
 }
 
-
+/**
+  * BUT : Déplace les coordonnées sur la case en haut à droite de la case présente
+  * ENTREE : les coordonnées
+  * SORTIE : les coordonnées misent à jour
+  */
 void nordEst(coord *coord_pt){
 
     (*coord_pt).nX=(*coord_pt).nX+1;
@@ -112,7 +136,11 @@ void nordEst(coord *coord_pt){
     corriger(&(*coord_pt));
 }
 
-
+/**
+  * BUT : S'assure que les coordonnées ne sortent pas du tableau
+  * ENTREE : les coordonnées
+  * SORTIE : -
+  */
 void corriger(coord *coord_pt){
 
     if((*coord_pt).nX < 0){
@@ -133,7 +161,11 @@ void corriger(coord *coord_pt){
 
 }
 
-
+/**
+  * BUT : Initialise le tableau, les coordonnées et le compteur
+  * ENTREE : le tableau, les coordonnées et le compteur
+  * SORTIE : le tableau, les coordonnées et le compteur initialisé
+  */
 void init(int *carreMagique[TAILLE][TAILLE],coord *coord_pt,int *nCpt){
 
     int nI,nJ;
