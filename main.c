@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <string.h>
 
-/**
+/*
     i : int             :nVar
     f : float           :flVar
     d : double          :dblVar
@@ -61,7 +61,7 @@ int main()
     return 0;
 }
 
-/**
+/*
   * BUT : En fin de programme, afiche le tableau renseigné.
   * ENTREE : le tableau
   * SORTIE : tableau affiché
@@ -88,7 +88,7 @@ void affiche(int carreMagique[TAILLE][TAILLE]){
 
 }
 
-/**
+/*
   * BUT : Renseigne la case une foie les coordonnées selectionnées
   * ENTREE : la tableau et les coordonnées
   * SORTIE : la case remplie
@@ -99,7 +99,7 @@ void placer(int *carreMagique[TAILLE][TAILLE], coord *coord_pt, int *nCpt){
 
 }
 
-/**
+/*
   * BUT : Vérifie que la case présente est vide, sinon la procédure nordOuest est éxetutée pour changer les coordonnées sur une case vide
   * ENTREE : le tableau et les coordonnées
   * SORTIE : -
@@ -108,13 +108,15 @@ void testVide(int carreMagique[TAILLE][TAILLE], coord *coord_pt){
 
     if(carreMagique[(*coord_pt).nX][(*coord_pt).nY] != 0){
 
-        nordOuest(&coord_pt);
+        ///Pour une raison qui m'échappe appeller la procédure nordOuest ici la rend incappable d'acceder correctement à coord_pt
+        ///Note: j'ai évaluer et testé une solution à base de poiter de poiter mais je n'ai pus l'implémenter et j'ai du enlever les ** pour faire fonctionner à nouveau la fonction
+        //nordOuest(&coord_pt);
 
     }
 
 }
 
-/**
+/*
   * BUT : Déplace les coordonnées sur la case en haut à gauche de la case présente si elle à déjà été renseignée
   * ENTREE : les coordonnées
   * SORTIE : les coordonnées misent à jour
@@ -122,15 +124,12 @@ void testVide(int carreMagique[TAILLE][TAILLE], coord *coord_pt){
 void nordOuest(coord *coord_pt){
 
     (*coord_pt).nX=(*coord_pt).nX-1;
-    //int lol1 = (*coord_pt).nX;
 	(*coord_pt).nY=(*coord_pt).nY-1;
-	//int lol2 = (*coord_pt).nY;
-	//printf("%d %d",lol1,lol2);
     corriger(&(*coord_pt));
 
 }
 
-/**
+/*
   * BUT : Déplace les coordonnées sur la case en haut à droite de la case présente
   * ENTREE : les coordonnées
   * SORTIE : les coordonnées misent à jour
@@ -143,7 +142,7 @@ void nordEst(coord *coord_pt){
 
 }
 
-/**
+/*
   * BUT : S'assure que les coordonnées ne sortent pas du tableau
   * ENTREE : les coordonnées
   * SORTIE : -
@@ -168,7 +167,7 @@ void corriger(coord *coord_pt){
 
 }
 
-/**
+/*
   * BUT : Initialise le tableau, les coordonnées et le compteur
   * ENTREE : le tableau, les coordonnées et le compteur
   * SORTIE : le tableau, les coordonnées et le compteur initialisé
