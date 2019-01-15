@@ -44,7 +44,7 @@ int main()
     printf("%s\n",sTexte);
 
     init(*carreMagique,&coord_pt,&nCpt);
-    while(nCpt <= TAILLE*TAILLE){
+    for(nCpt = 0,nCpt < TAILLE*TAILLE,nCpt++){
 
         nordEst(&coord_pt);
         testVide(carreMagique,&coord_pt);
@@ -52,7 +52,6 @@ int main()
             nordOuest(&coord_pt);
         }
         placer(&carreMagique,&coord_pt, &nCpt);
-        nCpt++;
 
     }
 
@@ -61,7 +60,7 @@ int main()
     return 0;
 }
 
-/*
+/**
   * BUT : En fin de programme, afiche le tableau renseigné.
   * ENTREE : le tableau
   * SORTIE : tableau affiché
@@ -88,7 +87,7 @@ void affiche(int carreMagique[TAILLE][TAILLE]){
 
 }
 
-/*
+/**
   * BUT : Renseigne la case une foie les coordonnées selectionnées
   * ENTREE : la tableau et les coordonnées
   * SORTIE : la case remplie
@@ -99,7 +98,7 @@ void placer(int *carreMagique[TAILLE][TAILLE], coord *coord_pt, int *nCpt){
 
 }
 
-/*
+/**
   * BUT : Vérifie que la case présente est vide, sinon la procédure nordOuest est éxetutée pour changer les coordonnées sur une case vide
   * ENTREE : le tableau et les coordonnées
   * SORTIE : -
@@ -116,7 +115,7 @@ void testVide(int carreMagique[TAILLE][TAILLE], coord *coord_pt){
 
 }
 
-/*
+/**
   * BUT : Déplace les coordonnées sur la case en haut à gauche de la case présente si elle à déjà été renseignée
   * ENTREE : les coordonnées
   * SORTIE : les coordonnées misent à jour
@@ -129,7 +128,7 @@ void nordOuest(coord *coord_pt){
 
 }
 
-/*
+/**
   * BUT : Déplace les coordonnées sur la case en haut à droite de la case présente
   * ENTREE : les coordonnées
   * SORTIE : les coordonnées misent à jour
@@ -142,7 +141,7 @@ void nordEst(coord *coord_pt){
 
 }
 
-/*
+/**
   * BUT : S'assure que les coordonnées ne sortent pas du tableau
   * ENTREE : les coordonnées
   * SORTIE : -
@@ -167,7 +166,7 @@ void corriger(coord *coord_pt){
 
 }
 
-/*
+/**
   * BUT : Initialise le tableau, les coordonnées et le compteur
   * ENTREE : le tableau, les coordonnées et le compteur
   * SORTIE : le tableau, les coordonnées et le compteur initialisé
